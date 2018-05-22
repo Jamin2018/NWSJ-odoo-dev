@@ -32,15 +32,14 @@ class Pivot(http.Controller):
         if len(size) == 0 : size = '.*'
 
 
-        datas = request.env['amos.html'].search([])
-        url = 'http://192.168.0.102:8000/pivot-table-data?date='+date+'&account='+account+'&category='+category+'&style='+style+'&color='+color+'&size='+size
-        print url
-        obj = requests.get(url)
-        datas = json.loads(obj.text)['data']
+        # datas = request.env['amos.html'].search([])
+        # url = 'http://192.168.0.102:8000/pivot-table-data?date='+date+'&account='+account+'&category='+category+'&style='+style+'&color='+color+'&size='+size
+        # print url
+        # obj = requests.get(url)
+        # datas = json.loads(obj.text)['data']
 
-        return request.render('Amos_Html.pivot_table', {'datas': datas,
-                                                        })
-    # self.write({'state': 'cancel'})
+        return request.render('Amos_Html.pivot_table')
+
 
     @http.route('/NWSJ/pivot-table-data', auth='public', website=True)
     def pivot_table_data(self):
