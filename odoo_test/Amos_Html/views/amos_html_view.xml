@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="action_amos_html" model="ir.actions.act_window">
+            <field name="name">数据透视表</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">amos.html</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    创建数据透视表
+                </p>
+            </field>
+        </record>
+
+
+        <!--<menuitem name="" id="menu_one_" groups="base.group_user,base.group_sale_manager" sequence="1"/>-->
+        <!--<menuitem name="" id="menu_two_" parent="menu_one_" sequence="1"/>-->
+        <menuitem name="数据透视表" id="menu_amos_html" action="action_amos_html" sequence="1"/>
+
+        <!--窗体事件 查询 -->
+
+
+        <record id="view_form_amos_html" model="ir.ui.view">
+            <field name="name">amos html Form</field>
+            <field name="model">amos.html</field>
+            <field name="arch" type="xml">
+                <form string="窗体名称">
+                    <header>
+
+                        <button name="action_amos" states="draft,review,done,cancel" type="object" string="更新数据" />
+                        <!--<button name="action_draft" states="review,done,cancel" type="object" string="转成草稿" />-->
+                        <!--<button name="action_review" states="draft" type="object" string="等待审核" />-->
+                        <!--<button name="action_done" states="review,cancel" type="object" string="已完成" />-->
+                        <!--<button name="action_cancel" states="done" type="object" string="取消" />-->
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,review,done,close"
+                               statusbar_colors="{'review':'red','done':''blue}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="type"/>
+                                <field name="order_number"/>
+                                <field name="order_amount"/>
+                                <field name="refund_number"/>
+                                <field name="refund_amount"/>
+                                <field name="refund_rate"/>
+                                <field name="freight_cost"/>
+                            </group>
+                            <group>
+                                <field name="active" />
+                            </group>
+                        </group>
+                    </sheet>
+
+                    <!--<div class="oe_chatter">-->
+                    <!--<field name="message_follower_ids" widget="mail_followers" />-->
+                    <!--<field name="message_ids" widget="mail_thread" />-->
+                    <!--</div>-->
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_amos_html" model="ir.ui.view">
+            <field name="name">amos html Tree</field>
+            <field name="model">amos.html</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="type"/>
+                    <field name="order_number"/>
+                    <field name="order_amount"/>
+                    <field name="refund_number"/>
+                    <field name="refund_amount"/>
+                    <field name="refund_rate"/>
+                    <field name="freight_cost"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--<record id="view_search_amos_html" model="ir.ui.view">-->
+            <!--<field name="name">amos html Search</field>-->
+            <!--<field name="model">amos.html</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<search>-->
+                    <!--<field name="name" string="单据" filter_domain="[('name','ilick','self')]" />-->
+                <!--</search>-->
+            <!--</field>-->
+        <!--</record>-->
+
+    </data>
+</odoo>

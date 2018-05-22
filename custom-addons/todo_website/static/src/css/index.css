@@ -1,0 +1,6 @@
+.todo-app-done{
+    text-decoration: line-through;
+    size: 30px;
+    font-size: 30px;
+    color: red;
+}

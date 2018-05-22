@@ -1,0 +1,145 @@
+<odoo>
+    <template id="assets_frontend" name="amos_html_assets" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <!--<link rel="stylesheet" type="text/css" href="/Amos_Html/static/src/css/index.css" />-->
+
+        </xpath>
+    </template>
+
+
+
+    <template id="pivot_table" name="pivot_table">
+
+        <link rel="stylesheet" type="text/css" href="/Amos_Html/static/src/layui/css/layui.css" />
+        <script type="text/javascript" src="/Amos_Html/static/src/layui/layui.js" />
+        <script type="text/javascript" src="/Amos_Html/static/src/js/pivot_table.js" />
+
+        <t t-call="website.layout">
+            <div id="wrap" class="container">
+
+                <form class="layui-form layui-form-pane">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label ">日期范围</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input" id="privot_date" required="" lay-verify="" autocomplete="off" name="date"/>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">账户</label>
+                                <div class="layui-input-block" >
+                                    <select id="privot_account" name="account" lay-filter ="account">
+                                        <option value=".*">选择账户</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">品类</label>
+                                <div class="layui-input-block" >
+                                    <select id="privot_category" name="category" lay-filter ="category">
+                                        <option value=".*">选择品类</option>
+                                        <option value="neiyi">内衣</option>
+                                        <option value="yongyi">泳衣</option>
+                                        <option value="shangyi">上衣</option>
+                                        <option value="xiuxianku">休闲裤</option>
+                                        <option value="shatangku">沙滩裤</option>
+                                        <option value="泳衣">1泳衣</option>
+                                        <option value="泳裤">2泳裤</option>
+                                        <option value="泳装">3泳装</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">SKU</label>
+                                <div class="layui-input-block">
+                                    <select class="" name="style" lay-filter="style" id="privot_style">
+                                        <option value=".*">选择style</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">颜色</label>
+                                <div class="layui-input-block">
+                                    <select name="color" lay-filter="color" id="privot_color">
+                                        <option value=".*">选择color</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">码数</label>
+                                <div class="layui-input-block">
+                                    <select name="size" lay-filter="size" id="privot_size">
+                                        <option value=".*">选择size</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-filter="formDemo">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row">
+                    <div class="" id="content-inner">
+                        <table id="pivot_table" lay-filter='table'/>
+                    </div>
+                </div>
+
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>类型</td>
+                            <td>订单数量</td>
+                            <td>订单金额</td>
+                            <td>退款数量</td>
+                            <td>退款金额</td>
+                            <td>退款率</td>
+                            <td>运费成本</td>
+                        </tr>
+                    </thead>
+                    <tbody id="pivot_data">
+                        <t t-foreach="datas" t-as="data">
+                            <!--<tr>-->
+                            <!--<td><t t-esc="data.type" groups="__export__.res_groups_13, base.group_user" /></td>-->
+                            <!--<td><t t-esc="data.order_number" groups="__export__.res_groups_13, base.group_user"/></td>-->
+                            <!--<td><t t-esc="data.order_amount" groups="__export__.res_groups_13, base.group_user" /></td>-->
+                            <!--<td><t t-esc="data.refund_number" groups="__export__.res_groups_13, base.group_user" /></td>-->
+                            <!--<td><t t-esc="data.refund_amount" groups="__export__.res_groups_13" /></td>-->
+                            <!--<td><t t-esc="data.refund_rate" groups="__export__.res_groups_13" /></td>-->
+                            <!--<td><t t-esc="data.freight_cost" groups="__export__.res_groups_13" /></td>-->
+                            <!--</tr>-->
+
+                            <tr>
+                                <td><t t-esc="data['type']" groups="__export__.res_groups_13, base.group_user" /></td>
+                                <td><t t-esc="data['order_number']" groups="__export__.res_groups_13, base.group_user"/></td>
+                                <td><t t-esc="data['order_amount']" groups="__export__.res_groups_13, base.group_user" /></td>
+                                <td><t t-esc="data['refund_number']" groups="__export__.res_groups_13, base.group_user" /></td>
+                                <td><t t-esc="data['refund_amount']" groups="__export__.res_groups_13" /></td>
+                                <td><t t-esc="data['refund_rate']" groups="__export__.res_groups_13" /></td>
+                                <td><t t-esc="data['freight_cost']" groups="__export__.res_groups_13" /></td>
+                            </tr>
+
+                        </t>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </t>
+    </template>
+
+
+</odoo>

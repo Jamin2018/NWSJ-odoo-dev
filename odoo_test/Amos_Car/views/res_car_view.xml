@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!-- 窗体事件 查询 -->
+        <record id="action_res_car" model="ir.actions.act_window">
+            <field name="name">车辆管理</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.car</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    创建车辆管理
+                </p>
+            </field>
+        </record>
+
+        <!--<menuitem name="" id="menu_one_" groups="base.group_user,base.group_sale_manager" sequence="1"/>-->
+        <!--<menuitem name="" id="menu_two_" parent="menu_one_" sequence="1"/>-->
+        <menuitem name="车辆管理" id="menu_res_car" action="action_res_car" sequence="1"/>
+
+        <record id="view_form_res_car" model="ir.ui.view">
+            <field name="name">res car Form</field>
+            <field name="model">res.car</field>
+            <field name="arch" type="xml">
+                <form string="res car Task">
+                    <header>
+
+                        <button name="action_amos" states="draft,review,done,cancel" type="object" string="测试" />
+                        <!--<button name="action_draft" states="review,done,cancel" type="object" string="转成草稿" />-->
+                        <!--<button name="action_review" states="draft" type="object" string="等待审核" />-->
+                        <!--<button name="action_done" states="review,cancel" type="object" string="已完成" />-->
+                        <!--<button name="action_cancel" states="done" type="object" string="取消" />-->
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,review,done,close" class="oe_right" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" required="1" readonly="1"/>
+                                <field name="name" required="1"/>
+                                <field name="func"/>
+                                <field name="instructor"/>
+                                <field name="active"/>
+                                <field name="total"/>
+                                <field name="user_id"/>
+                            </group>
+                            <group>
+                                <field name="count" required="1"/>
+                                <field name="price" required="1"  digits="(16,3)"/>
+                                <field name="sex" />
+                                <field name="date" />
+                                <field name="date_order" />
+                            </group>
+                        </group>
+                        <field name="lines">
+                            <tree string="list" editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="name" />
+                                <field name="price" />
+                            </tree>
+                        </field>
+                        <field name="note" widget="html"/>
+                        <field name="content"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_res_car" model="ir.ui.view">
+            <field name="name">res car Tree</field>
+            <field name="model">res.car</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="instructor"/>
+                    <field name="active"/>
+                    <field name="count" required="1"/>
+                    <field name="date" />
+                    <field name="date_order" />
+                    <field name="user_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="res_car_form_inherit">
+            <field name="name">res.car.from</field>
+            <field name="model">res.car</field>
+            <field name="inherit_id" ref="Amos_Car.view_form_res_car" />
+            <field name="arch" type="xml">
+                <field name="note" position="after">
+                    <field name="note_p" />
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

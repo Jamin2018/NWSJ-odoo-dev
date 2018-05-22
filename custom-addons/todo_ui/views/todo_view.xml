@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_form_todo_task_ui" model="ir.ui.view">
+        <field name="model">todo.task</field>
+        <field name="priority">15</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" invisible="True" />
+                    <button name="do_toggle_done" type="object" attrs="{'invisible':[('state','in',['draft'])]}"
+                            string="Toggle Done" class="oe_highlight"/>
+                    <field name="stage_id" widget="statusbar" clickable="True" options="{'fold_field':'fold'}" />
+                </header>
+                <sheet>
+
+                </sheet>
+                <field name="message_follower_ids" widget="mail_followers" />
+                <field name="massage_ids" widget="mail_thread" />
+            </form>
+        </field>
+    </record>
+
+</odoo>
